@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
-class StudentRecord{
+class StudentRecord {
     String name;
     double grade;
 
@@ -14,38 +13,32 @@ class StudentRecord{
 }
 
 public class StudentGradeTrackerGUI {
-    private ArrayList<Student> students = new ArrayList<>();
-    private JFrame frame;
+    private ArrayList<StudentRecord> students = new ArrayList<>();
     private JTextField nameField, gradeField;
     private JTextArea outputArea;
 
     public StudentGradeTrackerGUI() {
-        frame = new JFrame("Student Grade Tracker - CodeAlpha");
+        JFrame frame = new JFrame("Student Grade Tracker - CodeAlpha");
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
-        // Name input
         frame.add(new JLabel("Student Name:"));
         nameField = new JTextField(15);
         frame.add(nameField);
 
-        // Grade input
         frame.add(new JLabel("Grade:"));
         gradeField = new JTextField(5);
         frame.add(gradeField);
 
-        // Add button
         JButton addButton = new JButton("Add Student");
         addButton.addActionListener(e -> addStudent());
         frame.add(addButton);
 
-        // Show results button
         JButton showButton = new JButton("Show Summary");
         showButton.addActionListener(e -> showSummary());
         frame.add(showButton);
 
-        // Output area
         outputArea = new JTextArea(10, 40);
         outputArea.setEditable(false);
         frame.add(new JScrollPane(outputArea));
@@ -58,18 +51,18 @@ public class StudentGradeTrackerGUI {
         String gradeText = gradeField.getText().trim();
 
         if (name.isEmpty() || gradeText.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "Please enter both name and grade.");
+            JOptionPane.showMessageDialog(null, "Please enter both name and grade.");
             return;
         }
 
         try {
             double grade = Double.parseDouble(gradeText);
-            students.add(new Student(name, grade));
+            students.add(new StudentRecord(name, grade));
             outputArea.append("Added: " + name + " - " + grade + "\n");
             nameField.setText("");
             gradeField.setText("");
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(frame, "Invalid grade. Please enter a number.");
+            JOptionPane.showMessageDialog(null, "Invalid grade. Please enter a number.");
         }
     }
 
@@ -82,7 +75,7 @@ public class StudentGradeTrackerGUI {
         double sum = 0, highest = students.get(0).grade, lowest = students.get(0).grade;
         String topStudent = students.get(0).name, lowStudent = students.get(0).name;
 
-        for (Student s : students) {
+        for (StudentRecord s : students) {
             sum += s.grade;
             if (s.grade > highest) {
                 highest = s.grade;
@@ -107,3 +100,5 @@ public class StudentGradeTrackerGUI {
         SwingUtilities.invokeLater(StudentGradeTrackerGUI::new);
     }
 }
+
+
