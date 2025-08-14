@@ -18,6 +18,11 @@ It allows users to enter student names and grades, then calculates:
 1. Clone this repository:
     ```bash'''
    https://github.com/Git-Nilesh/CodeAlpha_StudentGradeTracker.git
+    ## Screenshots
+### Console View
+![Console Screenshot](images/console.png)
+### GUI View
+![GUI Screenshot](images/GUI.png)
 ## 📸 Sample Output
 ```plaintext
 ===== Student Grade Tracker =====
