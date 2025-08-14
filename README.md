@@ -45,7 +45,7 @@ CodeAlpha_StudentGradeTracker/
  📜 License
  ---
 If you paste this **entire block** into the README editor on GitHub and click **Commit new file**, your repo will instantly look polished.  
-Want me to also give you a **LinkedIn video post template** so we can jump to Step 4 right after this?
+
 
 
    
